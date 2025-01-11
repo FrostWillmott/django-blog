@@ -1,0 +1,32 @@
+# Message Broker RabbitMQ for Celery queues
+# In celery:
+# CELERY_BROKER_URL=pyamqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq/${RABBITMQ_DEFAULT_VHOST}
+# CELERY_RESULT_BACKEND=rpc://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq/${RABBITMQ_DEFAULT_VHOST}
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+      RABBITMQ_DEFAULT_VHOST: host
+    networks:
+      - queue_network
+    restart: always
+    healthcheck:
+      test: rabbitmq-diagnostics -q status
+      interval: 10s
+      timeout: 30s
+      retries: 3
+
+volumes:
+  rabbitmq:
+
+networks:
+  queue_network:
+    driver: bridge

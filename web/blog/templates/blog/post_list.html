@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% load static main %}
+{% block title %}Blog Post{% endblock title%}
+
+{% block container %}
+
+
+<div class="row">
+  <div class="col-lg-8">
+<!-- List of Articles -->
+  </div>
+  {% include 'blog/includes/right_sidebar.html' %}
+</div>
+{% endblock container %}
+
+{% block jquery %}
+$.getScript('{% static 'blog/js/list.js' %}');
+{% endblock %}
