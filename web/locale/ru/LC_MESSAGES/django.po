@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-17 17:40+0200\n"
+"PO-Revision-Date: 2025-01-17 17:46+0200\n"
+"Last-Translator: Super Admin <frost19812014@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.10.1\n"
+
+#: api/v1/auth_app/serializers.py:11
+msgid "Email not verified"
+msgstr "Е-мейл не подтвержден"
+
+#: api/v1/auth_app/serializers.py:12
+msgid "Your account is not active. Please contact Your administrator"
+msgstr ""
+
+#: api/v1/auth_app/serializers.py:13
+msgid "Entered email or password is incorrect"
+msgstr "Введенный е-мейл или пароль некорректен"
+
+#: api/v1/auth_app/serializers.py:14
+msgid "User is already registered with this e-mail address"
+msgstr ""
+
+#: api/v1/auth_app/serializers.py:15
+msgid "The two password fields did not match"
+msgstr ""
+
+#: api/v1/auth_app/serializers.py:32
+msgid "User is already registered with this e-mail address."
+msgstr ""
+
+#: api/v1/auth_app/services.py:49
+msgid "Register confirmation email"
+msgstr ""
+
+#: api/v1/auth_app/services.py:76
+msgid "Successfully logged out."
+msgstr ""
+
+#: api/v1/auth_app/services.py:88
+msgid "Refresh token was not included in request data."
+msgstr ""
+
+#: api/v1/auth_app/services.py:96 api/v1/auth_app/services.py:100
+msgid "An error has occurred."
+msgstr ""
+
+#: api/v1/auth_app/services.py:105
+msgid ""
+"Neither cookies or blacklist are enabled, so the token has not been deleted "
+"server side. Please make sure the token is deleted client side."
+msgstr ""
+
+#: api/v1/auth_app/views.py:24
+msgid "Confirmation email has been sent"
+msgstr ""
+
+#: api/v1/auth_app/views.py:52
+msgid "Password reset e-mail has been sent."
+msgstr ""
+
+#: api/v1/auth_app/views.py:65
+msgid "Password has been reset with the new password."
+msgstr ""
+
+#: api/v1/auth_app/views.py:78
+msgid "Email verified"
+msgstr ""
+
+#: auth_app/templates/auth_app/includes/birthday.html:2
+msgid "Enter your date of birth:"
+msgstr ""
+
+#: blog/choices.py:6
+msgid "Inactive"
+msgstr ""
+
+#: blog/choices.py:7
+msgid "Active"
+msgstr ""
+
+#: blog/models.py:21
+msgid "Category"
+msgstr ""
+
+#: blog/models.py:22
+msgid "Categories"
+msgstr ""
+
+#: blog/models.py:57
+msgid "Article"
+msgstr ""
+
+#: blog/models.py:58
+msgid "Articles"
+msgstr ""
+
+#: blog/models.py:73
+msgid "Comment"
+msgstr ""
+
+#: blog/models.py:74
+msgid "Comments"
+msgstr ""
+
+#: contact_us/models.py:11
+msgid "Feedback"
+msgstr ""
+
+#: main/admin.py:18
+msgid "Personal info"
+msgstr ""
+
+#: main/admin.py:19
+msgid "Secrets"
+msgstr ""
+
+#: main/admin.py:21
+msgid "Permissions"
+msgstr ""
+
+#: main/admin.py:26
+msgid "Important dates"
+msgstr ""
+
+#: main/models.py:15
+msgid "Email address"
+msgstr ""
+
+#: main/models.py:23
+msgid "User"
+msgstr ""
+
+#: main/models.py:24
+msgid "Users"
+msgstr "Пользователи"
+
+#: templates/includes/header_sign_status.html:9
+msgid "Hello"
+msgstr ""
+
+#: templates/includes/header_sign_status.html:13
+msgid "Profile"
+msgstr ""
+
+#: templates/includes/header_sign_status.html:15
+msgid "Log off"
+msgstr ""
+
+#: templates/includes/header_sign_status.html:20
+msgid "Sign in"
+msgstr ""
+
+#: templates/includes/header_sign_status.html:21
+msgid "Sign up"
+msgstr ""
+
+#: templates/index.html:14
+msgid "Lorem "
+msgstr ""
+
+#: templates/index.html:15 templates/index.html:25 templates/index.html:33
+msgid "Learn more"
+msgstr ""
+
+#: templates/index.html:20
+msgid "Lorem."
+msgstr ""
+
+#: templates/index.html:21 templates/index.html:29
+msgid ""
+"\n"
+"      Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor\n"
+"      "
+msgstr ""
+
+#: templates/index.html:28
+msgid "Lorem"
+msgstr ""

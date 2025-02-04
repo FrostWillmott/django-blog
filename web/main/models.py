@@ -13,6 +13,7 @@ UserType = TypeVar('UserType', bound='User')
 class User(AbstractUser):
     username = None  # type: ignore
     email = models.EmailField(_('Email address'), unique=True)
+    is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD: str = 'email'
     REQUIRED_FIELDS: list[str] = []

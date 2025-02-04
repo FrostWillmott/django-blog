@@ -7,7 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-b2sh!qk&=%azim-=s&=d1(-1upbq7H&-^-=tmPeHPLKXD')
 
-DEBUG = int(os.environ.get('DEBUG', 1))
+# DEBUG = int(os.environ.get('DEBUG', 1))
+DEBUG = True
 
 ALLOWED_HOSTS: list = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 
@@ -102,7 +103,9 @@ LOGOUT_URL = 'rest_framework:logout'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'auth_app/templates/auth_app'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -170,7 +173,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
-LANGUAGES = (('en', 'English'),)
+LANGUAGES = (('en', 'English'), ('ru', 'Russian'))
 
 SESSION_COOKIE_NAME = 'sessionid'
 CSRF_COOKIE_NAME = 'csrftoken'
@@ -293,3 +296,13 @@ if (SENTRY_DSN := os.environ.get('SENTRY_DSN')) and ENABLE_SENTRY:
         # django.contrib.auth) you may enable sending PII data.
         send_default_pii=True,
     )
+
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
+#
+# EMAIL_HOST = os.environ.get('EMAIL_HOST')
+# EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
+# EMAIL_PORT = os.environ.get('EMAIL_PORT')
+# EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
+# EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')

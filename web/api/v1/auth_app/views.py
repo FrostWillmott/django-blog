@@ -1,13 +1,15 @@
 from dj_rest_auth import views as auth_views
-from django.contrib.auth import logout as django_logout
+from django.contrib.auth import logout as django_logout, get_user_model
 from django.utils.translation import gettext_lazy as _
 from rest_framework import status
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from . import serializers
 from .services import AuthAppService, full_logout
+from main.models import User
+from main.tasks import send_information_email
 
 
 class SignUpView(GenericAPIView):
@@ -19,11 +21,18 @@ class SignUpView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
 
         service = AuthAppService()
-        service.create_user(serializer.validated_data)
+        user = service.create_user(serializer.validated_data)
+        send_information_email.delay(
+            subject="Successful registration!",
+            template_name="emails/confirmation_email.html",
+            context={'user': user.full_name, 'activate_url': service.get_activate_url(user)},
+            to_email=user.email,
+        )
         return Response(
             {'detail': _('Confirmation email has been sent')},
             status=status.HTTP_201_CREATED,
         )
+
 
 
 class LoginView(auth_views.LoginView):
@@ -74,7 +83,16 @@ class VerifyEmailView(GenericAPIView):
     def post(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+
+        if user and not user.is_active and user.confirmation_key == serializer.validated_data['key']:
+            user.is_active = True
+            user.confirmation_key = None
+            user.save()
+            return Response(
+                {'detail': _('Email verified')},
+                status=status.HTTP_200_OK,
+            )
         return Response(
-            {'detail': _('Email verified')},
-            status=status.HTTP_200_OK,
+            {'detail': _('Invalid or expired confirmation link.')},
+            status=status.HTTP_400_BAD_REQUEST,
         )

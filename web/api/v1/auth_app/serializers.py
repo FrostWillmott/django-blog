@@ -23,7 +23,7 @@ class UserSignUpSerializer(serializers.Serializer):
     password_1 = serializers.CharField(write_only=True, min_length=8)
     password_2 = serializers.CharField(write_only=True, min_length=8)
 
-    def validate_password1(self, password: str):
+    def validate_password_1(self, password: str):
         validate_password(password)
         return password
 
@@ -36,6 +36,9 @@ class UserSignUpSerializer(serializers.Serializer):
         if data['password_1'] != data['password_2']:
             raise serializers.ValidationError({'password_2': error_messages['password_not_match']})
         return data
+
+    def create(self, validated_data: dict):
+        return AuthAppService().create_user(validated_data)
 
 
 class LoginSerializer(serializers.Serializer):

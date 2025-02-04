@@ -1,3 +1,4 @@
+import uuid
 from typing import TYPE_CHECKING, NamedTuple
 from urllib.parse import urlencode, urljoin
 
@@ -66,10 +67,21 @@ class AuthAppService:
         return User.objects.get(email=email)
 
     @transaction.atomic()
-    def create_user(self, validated_data: dict):
+    def create_user(self, validated_data: dict) -> User:
         data = CreateUserData(**validated_data)
-        print(f'{data=}')
-        return User
+        user = User.objects.create_user(
+            first_name=data.first_name,
+            last_name=data.last_name,
+            email=data.email,
+            password=data.password_1,
+            is_active=False,
+        )
+        return user
+
+    def get_activate_url(self, user: User) -> str:
+        return ConfirmationEmailHandler(user).email_kwargs()['context']['activate_url']
+
+
 
 
 def full_logout(request):
